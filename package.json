@@ -1,0 +1,23 @@
+{
+  "name": "wildberriestms",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreiBats/WildberriesTMS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreiBats/WildberriesTMS/issues"
+  },
+  "homepage": "https://github.com/AndreiBats/WildberriesTMS#readme",
+  "devDependencies": {
+    "parcel": "^2.6.2",
+    "sass": "^1.53.0"
+  }
+}
