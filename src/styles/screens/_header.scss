@@ -1,0 +1,72 @@
+.header {
+    background: #fdf;
+    padding: 10px;
+
+    @include tablet {
+        padding: 7px;
+    }
+
+    @include mobile {
+        padding: 4px;
+    }
+    
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo {
+        font-size: 30px;
+        margin-right: 10px;
+
+        @include tablet {
+            font-size: 22px;
+            margin-right: 5px;
+        }
+
+        @include mobile {
+            font-size: 16px;
+        }
+    }
+
+    &__search {
+        width: 100%;
+        margin-right: 10px;
+
+        @include tablet {
+            margin-right: 0px;
+        }
+
+        &-input {
+            width: 100%;
+            border: none;
+            font-size: 25px;
+            border-radius: 5px;
+            
+            @include tablet {
+                font-size: 17px;
+            }
+
+            @include mobile {
+                font-size: 13px;
+            }
+        }
+    }
+
+    &__basket-logo {
+        cursor: pointer;
+    }
+}
+
+.fa-solid {
+    font-size: 30px;
+
+    @include tablet {
+        font-size: 22px;
+    }
+
+    @include mobile {
+        font-size: 16px;
+    }
+}
