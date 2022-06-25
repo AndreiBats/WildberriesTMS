@@ -5,4 +5,13 @@
 @import "fonts";
 
 // Screens
+
+@import "./screens/header";
+@import "./screens/hits";
+@import "./screens/product";
 @import "./screens/basket";
+@import "./screens/footer";
+
+
+@import "../../node_modules/swiper/swiper-bundle.css"
+

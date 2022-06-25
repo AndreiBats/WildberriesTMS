@@ -1,0 +1,27 @@
+.swiper {
+    height: 200px;
+    padding: 0;
+
+    &__wrapper {
+        
+    }
+}
+
+.swiper-button-next, .swiper-rtl .swiper-button-prev {
+    left: auto;
+    right: 0px;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    top: 10%;
+    width: 50%;
+    height: 200px;
+}
+
+.swiper-button-prev {
+    left: 0;
+}
+
+:root {
+    --swiper-theme-color: #fff;
+}
