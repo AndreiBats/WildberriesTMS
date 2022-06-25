@@ -1,6 +1,6 @@
 document.querySelector("#searchbar").oninput = function () {
   let val = this.value.trim();
-  let searchbarItem = document.querySelectorAll(".product__card");
+  let searchbarItem = document.querySelectorAll(".product__card-title");
   if (val != "") {
     searchbarItem.forEach(function (elem) {
       if (elem.innerText.search(val) === -1) {
