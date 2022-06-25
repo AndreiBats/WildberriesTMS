@@ -1,72 +1,73 @@
 .product {
+  &__title {
+    font-size: 40px;
+    color: #fff;
 
-    &__title {
-        font-size: 40px;
-        color: #fff;
-
-        @include tablet {
-            font-size: 30px;
-        }
-
-        @include mobile {
-            font-size: 20px;
-        }
+    @include tablet {
+      font-size: 30px;
     }
 
-    &__cards {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
+    @include mobile {
+      font-size: 20px;
+    }
+  }
+
+  &__cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__card {
+    width: 200px;
+    border-radius: 0px 0px 10px 10px;
+    margin-bottom: 15px;
+    background-color: rgb(255, 221, 221);
+    cursor: pointer;
+
+    @include tablet {
+      width: 170px;
     }
 
-    &__card {
-        width: 200px;
-        border-radius: 0px 0px 10px 10px;
-        margin-bottom: 15px;
-        background-color: rgb(255, 221, 221);
-        cursor: pointer;
-        
-        @include tablet {
-            width: 170px;
+    @include mobile {
+      width: 125px;
+    }
+  }
 
-        }
+  &__card.hide {
+    display: none;
+  }
 
-        @include mobile {
-            width: 125px;
-        }
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__info-main {
+    margin-left: 5px;
+
+    @include tablet {
+      font-size: 12px;
+    }
+  }
+
+  &__info-plus {
+    :hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__card-img {
+    width: auto;
+    height: 300px;
+
+    @include tablet {
+      height: 248px;
     }
 
-    &__info {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    @include mobile {
+      height: 188px;
     }
-
-    &__info-main {
-        margin-left: 5px;
-
-        @include tablet {
-            font-size: 12px;
-        }
-    }
-
-    &__info-plus {
-        :hover {
-            opacity: .8;
-        }
-    }
-
-    &__card-img {
-        width: auto;
-        height: 300px;
-
-        @include tablet {
-            height: 248px;
-        }
-
-        @include mobile {
-            height: 188px
-        }
-    }
-
+  }
 }
