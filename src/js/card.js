@@ -1,55 +1,38 @@
-function renderCard({ name, id, price, previousPrice, image }) {
-  return `
-    <div class="product__card" data-id="${id}">
-      <img src="${image}" alt="Lime" class="product__card-img" />
-      <div class="product__info">
-        <div class="product__info-main">
-          <h3 class="product__card-title">${name}</h3>
-          <p class="product__card-price">${price}</p>
-        </div>
-        <div class="product__info-plus">
-          <button>
-            <i class="fa-solid fa-square-plus"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-    `;
-}
-
-function render(cards) {
+function renderCard(cards) {
   const PRODUCT_ID = "product__cards";
-  const products = document.getElementById(PRODUCT_ID);
-  products.innerHTML = cards.map((card) => renderCard(card)).join("");
+  const productCards = document.getElementById(PRODUCT_ID);
+
+  for (const card of cards) {
+    const cardElement = document.createElement("div");
+    cardElement.classList.add("product__card");
+    cardElement.innerHTML = `
+  <div class="product__card__image">
+    <img src="${card.image}" alt="photo">
+  </div>
+  <div class="product__card__info">
+    <h3 class="product__card__title">Наименование: ${card.name}</h3>
+    <p class="product__card__previous">Цена со скидкой: ${card.previousPrice}</p>
+    <p class="product__card__price">Цена: ${card.price}</p>
+  </div>
+  <div class="product__info-plus">
+      <button><i class="fa-solid fa-square-plus"></i></button>
+    </div>
+  `;
+
+    productCards.append(cardElement);
+  }
 }
 
-const API__URL = "https://62b5dfa342c6473c4b3c12c2.mockapi.io";
-
-async function fetchCard(id) {
-  const response = await fetch(`${API__URL}/card/${id}`);
-  const json = await response.json();
-
-  return json;
+function fetchCards() {
+  return fetch("https://62b5dfa342c6473c4b3c12c2.mockapi.io/card")
+    .then((response) => {
+      return response.json();
+    })
+    .then((json) => {
+      return json;
+    });
 }
 
-(async function fetchCardArray(API__URL) {
-  const response = await fetch(`${API__URL}/card`);
-  const json = await response.json();
-
-  for (let card of json) {
-    console.log(card);
-  }
-})()(async () => {
-  const cardIds = [];
-  const cards = [];
-
-  for (let i = 1; i <= 10; i++) {
-    cardIds.push(i);
-  }
-
-  for (let cardId of cardIds) {
-    const card = await fetchCard(cardId);
-    cards.push(card);
-    render(cards);
-  }
-})();
+fetchCards().then((json) => {
+  renderCard(json);
+});
