@@ -1,7 +1,7 @@
-function renderCard({ name, id, price, previousPrice, urlImage }) {
+function renderCard({ name, id, price, previousPrice, image }) {
   return `
     <div class="product__card" data-id="${id}">
-      <img src="${urlImage}" alt="Lime" class="product__card-img" />
+      <img src="${image}" alt="Lime" class="product__card-img" />
       <div class="product__info">
         <div class="product__info-main">
           <h3 class="product__card-title">${name}</h3>
@@ -32,14 +32,20 @@ async function fetchCard(id) {
   return json;
 }
 
-(async () => {
-  let cardIds = [];
+(async function fetchCardArray(API__URL) {
+  const response = await fetch(`${API__URL}/card`);
+  const json = await response.json();
 
-  for (let i = 0; i <= 5; i++) {
+  for (let card of json) {
+    console.log(card);
+  }
+})()(async () => {
+  const cardIds = [];
+  const cards = [];
+
+  for (let i = 1; i <= 10; i++) {
     cardIds.push(i);
   }
-
-  const cards = [];
 
   for (let cardId of cardIds) {
     const card = await fetchCard(cardId);
