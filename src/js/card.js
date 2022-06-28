@@ -15,13 +15,21 @@ function renderCard(cards) {
     <p class="product__card__price">Цена: ${card.price}</p>
   </div>
   <div class="product__info-plus">
-      <button><i class="fa-solid fa-square-plus"></i></button>
+      <button class="button"><i class="fa-solid fa-square-plus"></i></button>
     </div>
   `;
 
     productCards.append(cardElement);
   }
 }
+
+let productCards = document.querySelector(".product__cards");
+
+productCards.addEventListener("click", (event) => {
+  if (event.target.className !== "fa-solid fa-square-plus") {
+    return console.log("не кнопка");
+  } else console.log("кнопка");
+});
 
 function fetchCards() {
   return fetch("https://62b5dfa342c6473c4b3c12c2.mockapi.io/card")
