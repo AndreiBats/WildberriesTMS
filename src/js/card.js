@@ -15,7 +15,7 @@ function renderCard(cards) {
     <p class="product__card__price">Цена: ${card.price}</p>
   </div>
   <div class="product__info-plus">
-      <button class="button"><i class="fa-solid fa-square-plus"></i></button>
+      <button class="button"><i class="fa-solid fa-square-plus add-cart" id="${card.id}"></i></button>
     </div>
   `;
 
@@ -25,11 +25,50 @@ function renderCard(cards) {
 
 let productCards = document.querySelector(".product__cards");
 
+function renderCardProduct(card) {
+  const cartList = document.querySelector(".header__basket-list"); // ul
+  const cartElement = document.createElement("li"); // li - элемент
+  cartElement.innerHTML = `
+  <article class="header__basket-product cart-product">
+  <img
+    src="${card.image}"
+    alt="MacBook"
+    class="cart-product__photo"
+  />
+  <div class="cart-product__text">
+    <h3 class="cart-product__description">
+      ${card.name}
+    </h3>
+    <span class="cart-product__price">${card.price}</span>
+  </div>
+  <button class="cart-product__delete">X</button>
+</article>
+`;
+
+  cartList.append(cartElement);
+}
+
+const cartList = document.querySelector(".header__basket-list");
+const clearCart = document.querySelector(".header__basket-button");
+
+clearCart.addEventListener("click", () => (cartList = ""));
+
 productCards.addEventListener("click", (event) => {
-  if (event.target.className !== "fa-solid fa-square-plus") {
-    return console.log("не кнопка");
-  } else console.log("кнопка");
+  if (event.target.id) {
+    const ID = event.target.id;
+    fetchOneCard(ID).then((json) => renderCardProduct(json));
+  }
 });
+
+function fetchOneCard(id) {
+  return fetch(`https://62b5dfa342c6473c4b3c12c2.mockapi.io/card/${id}`)
+    .then((response) => {
+      return response.json();
+    })
+    .then((json) => {
+      return json;
+    });
+}
 
 function fetchCards() {
   return fetch("https://62b5dfa342c6473c4b3c12c2.mockapi.io/card")
