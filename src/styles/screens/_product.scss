@@ -18,6 +18,10 @@
     flex-wrap: wrap;
   }
 
+  &__card__previous {
+    text-decoration: line-through;
+  }
+
   &__card {
     width: 200px;
     border-radius: 0px 0px 10px 10px;
