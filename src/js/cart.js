@@ -2,11 +2,17 @@ const cart = document.querySelector(".header__basket-logo"); // button cart
 const cartList = document.querySelector(".header__basket-list"); // ul
 const cartDelete = document.querySelector(".cart-product__delete"); // button delete card from cart
 const cartProducts = [];
-console.log(cartProducts);
 
 cartList.addEventListener("click", (event) => {
   if (event.target.dataset.id) {
     const ID = event.target.dataset.id;
+    let keys = Object.keys(localStorage);
+    for (let key of keys) {
+      if (key === ID) {
+        localStorage.removeItem(`${ID}`);
+      }
+    }
+
     for (let cartProduct of cartProducts) {
       if (cartProduct.id == ID) {
         let li = document.getElementById(`${ID}`);
@@ -17,9 +23,15 @@ cartList.addEventListener("click", (event) => {
       }
     }
   }
-});
+}); // удаление из корзины 1 элемента
 
-cart.addEventListener("click", () => (cartList.style.display = "block"));
+cart.addEventListener("click", () => {
+  let cardLs = Object.values(localStorage);
+  for (let card of cardLs) {
+    renderCartProduct(JSON.parse(card));
+  }
+  cartList.classList.toggle("header__basket-list");
+});
 
 function renderCartProduct(card) {
   const cartElement = document.createElement("li"); // li
@@ -58,8 +70,10 @@ productCards.addEventListener("click", (event) => {
     } else
       for (let card of products) {
         if (ID == card.id) {
+          let localCard = JSON.stringify(card);
+          localStorage.setItem(`${ID}`, localCard);
           renderCartProduct(card);
         }
       }
   }
-}); // закидывание в корзину карточки
+}); // добавление в корзину карточки
