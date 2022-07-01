@@ -7,9 +7,9 @@ function renderCard(cards) {
     cardElement.classList.add("product__card");
     cardElement.innerHTML = `
     <img src="${card.image}" alt="photo">
-    <h3 class="product__card__title">Наименование: ${card.name}</h3>
-    <p class="product__card__previous">Цена со скидкой: ${card.previousPrice}</p>
-    <p class="product__card__price">Цена: ${card.price}</p>
+    <h3 class="product__card__title">${card.name}</h3>
+    <p class="product__card__previous"> ${card.previousPrice}</p>
+    <p class="product__card__price">${card.price}</p>
     <button class="button fa-solid fa-square-plus add-cart" data-id="${card.id}"></button>
     
   `;
