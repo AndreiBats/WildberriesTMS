@@ -42,6 +42,7 @@ cart.addEventListener("click", () => {
 function renderCartProduct(card) {
   const cartElement = document.createElement("li"); // li
   cartElement.setAttribute("id", `${card.id}`);
+  cartElement.classList.add("cart-product");
   cartElement.innerHTML = `
     <article class="header__basket-product cart-product">
     <img
