@@ -1,7 +1,4 @@
 function renderCard(cards) {
-  const PRODUCT_ID = "product__cards";
-  const productCards = document.getElementById(PRODUCT_ID);
-
   for (const card of cards) {
     const cardElement = document.createElement("div");
     cardElement.classList.add("product__card");
@@ -22,16 +19,14 @@ let productCards = document.querySelector(".product__cards");
 let products = null;
 
 function fetchCards() {
-  return fetch("https://62b5dfa342c6473c4b3c12c2.mockapi.io/card")
-    .then((response) => {
+  return fetch("https://62b5dfa342c6473c4b3c12c2.mockapi.io/card").then(
+    (response) => {
       return response.json();
-    })
-    .then((json) => {
-      return json;
-    });
+    }
+  );
 }
 
 fetchCards().then((json) => {
   products = json;
-  renderCard(json);
+  renderCard(products);
 });
