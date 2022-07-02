@@ -46,7 +46,7 @@ function renderCartProduct(card) {
     <article class="header__basket-product cart-product">
     <img
       src="${card.image}"
-      alt="MacBook"
+      alt="${card.name}"
       class="cart-product__photo"
     />
     <div class="cart-product__text">

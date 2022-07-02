@@ -13,9 +13,9 @@
   }
 
   &__cards {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
   }
 
   &__card__previous {
@@ -24,7 +24,7 @@
 
   &__card {
     width: 200px;
-    border-radius: 0px 0px 10px 10px;
+    border-radius: 10px;
     margin-bottom: 15px;
     background-color: rgb(255, 221, 221);
     cursor: pointer;
@@ -36,6 +36,11 @@
     @include mobile {
       width: 125px;
     }
+  }
+
+  &__card:hover {
+    transform: scale(1.2);
+    transition: all 0.5s;
   }
 
   &__card.hide {

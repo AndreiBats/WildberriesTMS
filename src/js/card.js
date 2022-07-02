@@ -6,7 +6,7 @@ function renderCard(cards) {
     const cardElement = document.createElement("div");
     cardElement.classList.add("product__card");
     cardElement.innerHTML = `
-    <img src="${card.image}" alt="photo">
+    <img src="${card.image}" alt="photo" class="product__photo">
     <h3 class="product__card__title">${card.name}</h3>
     <p class="product__card__previous"> ${card.previousPrice}</p>
     <p class="product__card__price">${card.price}</p>
