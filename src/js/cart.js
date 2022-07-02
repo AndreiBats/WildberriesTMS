@@ -3,6 +3,16 @@ const cartList = document.querySelector(".header__basket-list"); // ul
 const cartDelete = document.querySelector(".cart-product__delete"); // button delete card from cart
 const cartProducts = [];
 
+function lS() {
+  let values = Object.values(localStorage);
+  if (Object.values(localStorage) !== null) {
+    for (let value of values) {
+      renderCartProduct(JSON.parse(value));
+    }
+  }
+}
+
+lS();
 cartList.addEventListener("click", (event) => {
   if (event.target.dataset.id) {
     const ID = event.target.dataset.id;
@@ -26,10 +36,6 @@ cartList.addEventListener("click", (event) => {
 }); // удаление из корзины 1 элемента
 
 cart.addEventListener("click", () => {
-  let cardLs = Object.values(localStorage);
-  for (let card of cardLs) {
-    renderCartProduct(JSON.parse(card));
-  }
   cartList.classList.toggle("header__basket-list");
 });
 
@@ -58,8 +64,9 @@ function renderCartProduct(card) {
 
 const clearCart = document.querySelector(".header__basket-button"); // delete all cart list
 clearCart.addEventListener("click", () => {
-  (cartList.innerHTML = "") & (cartList.style.display = "none");
+  cartList.innerHTML = "";
   cartProducts.length = 0;
+  localStorage.clear();
 });
 
 productCards.addEventListener("click", (event) => {
