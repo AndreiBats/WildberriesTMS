@@ -1,7 +1,10 @@
 const cart = document.querySelector(".header__basket-logo"); // button cart
 const cartList = document.querySelector(".header__basket-list"); // ul
 const cartDelete = document.querySelector(".cart-product__delete"); // button delete card from cart
+const fullPrice = document.querySelector(".header__basket-bottom"); // fullprice of product
 const clearCart = document.querySelector(".header__basket-button"); // delete all cart list
+const cartSum = document.querySelector(".header__basket-bottom");
+
 const cartProducts = [];
 
 function lS() {
@@ -12,11 +15,12 @@ function lS() {
     }
   }
 }
-
 lS();
+
 cartList.addEventListener("click", (event) => {
   if (event.target.dataset.id) {
     const ID = event.target.dataset.id;
+
     let keys = Object.keys(localStorage);
     for (let key of keys) {
       if (key === ID) {
@@ -25,7 +29,7 @@ cartList.addEventListener("click", (event) => {
     }
 
     for (let cartProduct of cartProducts) {
-      if (cartProduct.id == ID) {
+      if (cartProduct.id === ID) {
         let li = document.getElementById(`${ID}`);
         li.remove();
         cartProducts.forEach(function (el, i) {
@@ -38,9 +42,8 @@ cartList.addEventListener("click", (event) => {
 
 cart.addEventListener("click", () => {
   cartList.classList.toggle("header__basket-list");
-  if (cartList.length === 0) {
-    clearCart.style.display = "none";
-  }
+  cartSum.classList.toggle("header__basket-bottom");
+  clearCart.classList.toggle("header__basket-button");
 });
 
 function renderCartProduct(card) {
@@ -59,11 +62,12 @@ function renderCartProduct(card) {
     ${card.name}
     </h3>
     <span class="cart-product__price">${card.price}</span>
+    <span class="cart-product__quantity"></span>
     </div>
     <button class="cart-product__delete" data-id=${card.id}>X</button>
     </article>
     `;
-  cartProducts.push(cartElement);
+  cartProducts.push(card);
   cartList.append(cartElement);
 }
 
@@ -76,15 +80,12 @@ clearCart.addEventListener("click", () => {
 productCards.addEventListener("click", (event) => {
   if (event.target.dataset.id) {
     const ID = event.target.dataset.id;
-    if (products == null) {
-      console.log("ничего нет");
-    } else
-      for (let card of products) {
-        if (ID == card.id) {
-          let localCard = JSON.stringify(card);
-          localStorage.setItem(`${ID}`, localCard);
-          renderCartProduct(card);
-        }
+    for (let card of products) {
+      if (ID === card.id) {
+        let localCard = JSON.stringify(card);
+        localStorage.setItem(`${ID}`, localCard);
+        renderCartProduct(card);
       }
+    }
   }
 }); // добавление в корзину карточки

@@ -1,7 +1,6 @@
-function renderCard(cards) {
-  const PRODUCT_ID = "product__cards";
-  const productCards = document.getElementById(PRODUCT_ID);
+const productCards = document.querySelector(".product__cards");
 
+function renderCard(cards) {
   for (const card of cards) {
     const cardElement = document.createElement("div");
     cardElement.classList.add("product__card");
@@ -11,27 +10,23 @@ function renderCard(cards) {
     <p class="product__card__previous"> ${card.previousPrice}</p>
     <p class="product__card__price">${card.price}</p>
     <button class="button fa-solid fa-square-plus add-cart" data-id="${card.id}"></button>
-    
   `;
 
     productCards.append(cardElement);
   }
 }
 
-let productCards = document.querySelector(".product__cards");
-let products = null;
-
 function fetchCards() {
-  return fetch("https://62b5dfa342c6473c4b3c12c2.mockapi.io/card")
-    .then((response) => {
+  return fetch("https://62b5dfa342c6473c4b3c12c2.mockapi.io/card").then(
+    (response) => {
       return response.json();
-    })
-    .then((json) => {
-      return json;
-    });
+    }
+  );
 }
+
+let products = null;
 
 fetchCards().then((json) => {
   products = json;
-  renderCard(json);
+  renderCard(products);
 });
