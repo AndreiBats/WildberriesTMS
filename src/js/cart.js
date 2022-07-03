@@ -2,6 +2,8 @@ const cart = document.querySelector(".header__basket-logo"); // button cart
 const cartList = document.querySelector(".header__basket-list"); // ul
 const cartDelete = document.querySelector(".cart-product__delete"); // button delete card from cart
 const fullPrice = document.querySelector(".header__basket-bottom"); // fullprice of product
+const clearCart = document.querySelector(".header__basket-button"); // delete all cart list
+const cartSum = document.querySelector(".header__basket-bottom");
 const cartProducts = [];
 
 function FP() {
@@ -53,6 +55,8 @@ cartList.addEventListener("click", (event) => {
 
 cart.addEventListener("click", () => {
   cartList.classList.toggle("header__basket-list");
+  cartSum.classList.toggle("header__basket-bottom");
+  clearCart.classList.toggle("header__basket-button");
 });
 
 function renderCartProduct(card) {
@@ -78,7 +82,6 @@ function renderCartProduct(card) {
   cartList.append(cartElement);
 }
 
-const clearCart = document.querySelector(".header__basket-button"); // delete all cart list
 clearCart.addEventListener("click", () => {
   cartList.innerHTML = "";
   cartProducts.length = 0;
