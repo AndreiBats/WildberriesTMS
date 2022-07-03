@@ -4,6 +4,7 @@ const cartDelete = document.querySelector(".cart-product__delete"); // button de
 const fullPrice = document.querySelector(".header__basket-bottom"); // fullprice of product
 const clearCart = document.querySelector(".header__basket-button"); // delete all cart list
 const cartSum = document.querySelector(".header__basket-bottom");
+
 const cartProducts = [];
 
 function lS() {
@@ -48,11 +49,12 @@ cart.addEventListener("click", () => {
 function renderCartProduct(card) {
   const cartElement = document.createElement("li"); // li
   cartElement.setAttribute("id", `${card.id}`);
+  cartElement.classList.add("cart-product");
   cartElement.innerHTML = `
     <article class="header__basket-product cart-product">
     <img
       src="${card.image}"
-      alt="MacBook"
+      alt="${card.name}"
       class="cart-product__photo"
     />
     <div class="cart-product__text">
