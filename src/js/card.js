@@ -1,4 +1,4 @@
-let productCards = document.querySelector(".product__cards");
+const productCards = document.querySelector(".product__cards");
 
 function renderCard(cards) {
   for (const card of cards) {
@@ -10,7 +10,6 @@ function renderCard(cards) {
     <p class="product__card__previous"> ${card.previousPrice}</p>
     <p class="product__card__price">${card.price}</p>
     <button class="button fa-solid fa-square-plus add-cart" data-id="${card.id}"></button>
-    
   `;
 
     productCards.append(cardElement);

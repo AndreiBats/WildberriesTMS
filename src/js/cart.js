@@ -1,5 +1,4 @@
 const cart = document.querySelector(".header__basket-logo"); // button cart
-const cartDelete = document.querySelector(".cart-product__delete"); // button delete card from cart
 const cartList = document.querySelector(".header__basket-list"); // ul
 const cartProducts = [];
 
@@ -74,27 +73,11 @@ clearCart.addEventListener("click", () => {
 productCards.addEventListener("click", (event) => {
   if (event.target.dataset.id) {
     const ID = event.target.dataset.id;
-
-    if (localStorage.length === 0) {
-      for (let card of products) {
-        if (ID === card.id) {
-          let localCard = JSON.stringify(card);
-          localStorage.setItem(`${ID}`, localCard);
-          renderCartProduct(card);
-        }
-      }
-    } else if (localStorage.length !== 0) {
-      let keys = Object.keys(localStorage);
-      for (let key of keys) {
-        if (key !== ID) {
-          for (let card of products) {
-            if (ID === card.id) {
-              let localCard = JSON.stringify(card);
-              localStorage.setItem(`${ID}`, localCard);
-              renderCartProduct(card);
-            }
-          }
-        }
+    for (let card of products) {
+      if (ID === card.id) {
+        let localCard = JSON.stringify(card);
+        localStorage.setItem(`${ID}`, localCard);
+        renderCartProduct(card);
       }
     }
   }
