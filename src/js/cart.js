@@ -1,22 +1,7 @@
 const cart = document.querySelector(".header__basket-logo"); // button cart
-const cartList = document.querySelector(".header__basket-list"); // ul
 const cartDelete = document.querySelector(".cart-product__delete"); // button delete card from cart
-const fullPrice = document.querySelector(".header__basket-bottom"); // fullprice of product
+const cartList = document.querySelector(".header__basket-list"); // ul
 const cartProducts = [];
-
-function FP() {
-  let prices = Object.values(localStorage);
-  if (Object.values(localStorage) !== null) {
-    for (let price of prices) {
-      let sum = 0;
-      let cost = +JSON.parse(price).price;
-      sum += cost;
-      console.log(sum);
-      fullPrice.append(sum);
-    }
-  }
-}
-FP();
 
 function lS() {
   let values = Object.values(localStorage);
@@ -40,7 +25,7 @@ cartList.addEventListener("click", (event) => {
     }
 
     for (let cartProduct of cartProducts) {
-      if (cartProduct.id == ID) {
+      if (cartProduct.id === ID) {
         let li = document.getElementById(`${ID}`);
         li.remove();
         cartProducts.forEach(function (el, i) {
@@ -70,6 +55,7 @@ function renderCartProduct(card) {
     ${card.name}
     </h3>
     <span class="cart-product__price">${card.price}</span>
+    <span class="cart-product__quantity"></span>
     </div>
     <button class="cart-product__delete" data-id=${card.id}>X</button>
     </article>
@@ -88,15 +74,28 @@ clearCart.addEventListener("click", () => {
 productCards.addEventListener("click", (event) => {
   if (event.target.dataset.id) {
     const ID = event.target.dataset.id;
-    if (products == null) {
-      console.log("ничего нет");
-    } else
+
+    if (localStorage.length === 0) {
       for (let card of products) {
-        if (ID == card.id) {
+        if (ID === card.id) {
           let localCard = JSON.stringify(card);
           localStorage.setItem(`${ID}`, localCard);
           renderCartProduct(card);
         }
       }
+    } else if (localStorage.length !== 0) {
+      let keys = Object.keys(localStorage);
+      for (let key of keys) {
+        if (key !== ID) {
+          for (let card of products) {
+            if (ID === card.id) {
+              let localCard = JSON.stringify(card);
+              localStorage.setItem(`${ID}`, localCard);
+              renderCartProduct(card);
+            }
+          }
+        }
+      }
+    }
   }
 }); // добавление в корзину карточки

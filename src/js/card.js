@@ -1,3 +1,5 @@
+let productCards = document.querySelector(".product__cards");
+
 function renderCard(cards) {
   for (const card of cards) {
     const cardElement = document.createElement("div");
@@ -15,9 +17,6 @@ function renderCard(cards) {
   }
 }
 
-let productCards = document.querySelector(".product__cards");
-let products = null;
-
 function fetchCards() {
   return fetch("https://62b5dfa342c6473c4b3c12c2.mockapi.io/card").then(
     (response) => {
@@ -25,6 +24,8 @@ function fetchCards() {
     }
   );
 }
+
+let products = null;
 
 fetchCards().then((json) => {
   products = json;
