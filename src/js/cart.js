@@ -7,9 +7,23 @@ const cartSum = document.querySelector(".header__basket-bottom");
 
 const cartProducts = [];
 
+function cost(price) {
+  let sum = 0;
+  sum += Number(price);
+  localStorage.setItem("sum", JSON.stringify(sum));
+  fullPrice.append(sum);
+}
+
 function saveToLocalStorage() {
   let values = Object.values(localStorage);
-  if (Object.values(localStorage) !== null) {
+
+  if (localStorage.length === 0) {
+    fullPrice.append(0);
+  } else if (localStorage.length !== 0) {
+    let sum = localStorage.getItem("sum");
+    fullPrice.append(JSON.parse(sum));
+  }
+  if (values !== null) {
     for (let value of values) {
       renderCartProduct(JSON.parse(value));
     }
@@ -81,10 +95,12 @@ productCards.addEventListener("click", (event) => {
   if (event.target.dataset.id) {
     const ID = event.target.dataset.id;
     for (let card of products) {
+      const price = card.price;
       if (ID === card.id) {
         let localCard = JSON.stringify(card);
         localStorage.setItem(`${ID}`, localCard);
         renderCartProduct(card);
+        cost(price);
       }
     }
   }
