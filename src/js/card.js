@@ -16,12 +16,12 @@ function renderCard(cards) {
   }
 }
 
+const API_URL = "https://62b5dfa342c6473c4b3c12c2.mockapi.io/card";
+
 function fetchCards() {
-  return fetch("https://62b5dfa342c6473c4b3c12c2.mockapi.io/card").then(
-    (response) => {
-      return response.json();
-    }
-  );
+  return fetch(API_URL).then((response) => {
+    return response.json();
+  });
 }
 
 let products = null;
