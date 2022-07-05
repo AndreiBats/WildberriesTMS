@@ -7,7 +7,7 @@ const cartSum = document.querySelector(".header__basket-bottom");
 
 const cartProducts = [];
 
-function lS() {
+function saveToLocalStorage() {
   let values = Object.values(localStorage);
   if (Object.values(localStorage) !== null) {
     for (let value of values) {
@@ -15,7 +15,7 @@ function lS() {
     }
   }
 }
-lS();
+saveToLocalStorage();
 
 cartList.addEventListener("click", (event) => {
   if (event.target.dataset.id) {
