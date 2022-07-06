@@ -10,7 +10,7 @@ function fullSum(price) {
 
 function renderCart() {
   const productsStore = localStorageUtil.getProducts();
-  counter.append(productsStore.length - 1);
+  counter.append(productsStore.length);
 
   products.forEach(({ id, name, previousPrice }) => {
     if (productsStore.indexOf(id) !== -1) {
