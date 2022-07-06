@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/main.scss" />
+    <title>WildberriesTMS</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__container container">
+        <div class="header__logo">
+          <a href="#" class="header__logo-link">FRUITSTORE</a>
+        </div>
+
+        <div class="header__search">
+          <input
+            class="header__search-input"
+            id="searchbar"
+            type="text"
+            placeholder="Search..."
+          />
+        </div>
+
+        <div class="header__basket">
+          <div class="header__basket-top">
+            <button class="header__basket-logo">
+              <i class="fa-solid fa-basket-shopping"></i>
+            </button>
+            <div class="header__basket-info">
+              <span class="header__basket-counter"></span>
+              <span class="header__basket-fullprice"></span>
+            </div>
+          </div>
+
+          <div class="header__basket-cart">
+            <ul class="header__basket-list"></ul>
+            <button class="header__basket-button">Закрыть корзину</button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="hits">
+        <div class="swiper container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="./images/blueberry.jpg" alt="blueberry" />
+            </div>
+
+            <div class="swiper-slide">
+              <img src="./images/lemon.jpg" alt="lemon" />
+            </div>
+
+            <div class="swiper-slide">
+              <img src="./images/pomegranate.jpg" alt="pomegranate" />
+            </div>
+
+            <div class="swiper-slide">
+              <img src="./images/strawberries.jpg" alt="strawberries" />
+            </div>
+          </div>
+
+          <div class="swiper-pagination"></div>
+
+          <div class="swiper-button-prev">
+            <i class="fa-solid fa-arrow-left-long-to-line"></i>
+          </div>
+          <div class="swiper-button-next">
+            <i class="fa-solid fa-arrow-left-long-to-line"></i>
+          </div>
+        </div>
+      </section>
+      <section class="product">
+        <div class="container">
+          <div class="product__cards"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <p class="footer__title">Smth like a footer, but we don't sure</p>
+      </div>
+    </footer>
+    <script src="/src/js/localStorage.js"></script>
+    <script src="./js/card.js"></script>
+    <script src="./js/search-bar.js"></script>
+    <script src="./js/cart.js"></script>
+    <script src="./js/swiper.js" type="module"></script>
+    <script
+      src="https://kit.fontawesome.com/3736a1bedf.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
