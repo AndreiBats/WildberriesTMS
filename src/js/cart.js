@@ -7,6 +7,15 @@ const cartSum = document.querySelector(".header__basket-bottom");
 
 const cartProducts = [];
 
+function sum(price) {
+  let sum = 0;
+  for (let i = 0; i < cartProducts.length; i++) {
+    sum += cartProducts[i].price;
+  }
+  return sum;
+  console.log(sum);
+}
+
 function saveToLocalStorage() {
   let values = Object.values(localStorage);
   if (Object.values(localStorage) !== null) {
