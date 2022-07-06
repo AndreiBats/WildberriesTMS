@@ -5,14 +5,27 @@
   font-weight: bold;
   background-color: #fdf;
 
-  &-list {
+  &-info {
+    display: block;
   }
 
-  &-cart {
+  &-fullprice {
+    display: none;
+  }
+
+  &-counter {
+    display: none;
+  }
+
+  &-logo {
+    display: inline;
+  }
+
+  &-list {
     z-index: 10;
     visibility: hidden;
-    width: 97%;
-    height: 97vh;
+    width: 55%;
+    height: 55vh;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -29,7 +42,7 @@
   }
 
   &-button {
-    margin-bottom: 10px;
+    display: none;
   }
 
   &-top {
