@@ -6,10 +6,20 @@
   background-color: #fdf;
 
   &-list {
-    display: none;
-    // max-height: 300px;
-    // overflow: auto;
-    // padding: 0;
+  }
+
+  &-cart {
+    z-index: 10;
+    visibility: hidden;
+    width: 97%;
+    height: 97vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    padding: 30px;
+    background-color: white;
   }
 
   &-product {
@@ -19,7 +29,7 @@
   }
 
   &-button {
-    display: none;
+    margin-bottom: 10px;
   }
 
   &-top {

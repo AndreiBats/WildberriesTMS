@@ -25,17 +25,17 @@
 
         <div class="header__basket">
           <div class="header__basket-top">
-
             <button class="header__basket-logo">
               <i class="fa-solid fa-basket-shopping"></i>
             </button>
-            <div>
-              <button class="header__basket-button">Очистить корзину</button>
-            </div>
-
+            <div class="header__counter"></div>
           </div>
 
-          <ul class="header__basket-list"></ul>
+          <div class="header__basket-cart">
+            <ul class="header__basket-list"></ul>
+            <button class="header__basket-button">Закрыть корзину</button>
+            <span class="fullprice">Итого</span>
+          </div>
 
           <div class="header__basket-bottom">
             <span>Итого:</span>
@@ -76,7 +76,6 @@
       </section>
       <section class="product">
         <div class="container">
-          <h2 class="product__title">Products</h2>
           <div class="product__cards"></div>
         </div>
       </section>
@@ -86,10 +85,12 @@
         <p class="footer__title">Smth like a footer, but we don't sure</p>
       </div>
     </footer>
+    <script src="/src/js/localStorage.js"></script>
     <script src="./js/card.js"></script>
     <script src="./js/script.js"></script>
-    <script src="./js/swiper.js" type="module"></script>
     <script src="./js/cart.js"></script>
+    <script src="/src/js/counter.js"></script>
+    <script src="./js/swiper.js" type="module"></script>
     <script
       src="https://kit.fontawesome.com/3736a1bedf.js"
       crossorigin="anonymous"
